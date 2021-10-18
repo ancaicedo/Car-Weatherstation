@@ -174,115 +174,115 @@ void setup() {
 
 
 void loop() {
-//  if (loopCounter >= 100) {
-//    while (1);                      // Only allows 500 iterations of void loop()
-//  }
-//  loopCounter++;                    // Increment loopCounter by 1
-//
-//  //------------------------------------- DS1307 RTC Module ---------------------------------------
-//  /*
-//   * Many functions available (however only some are used). RTClib also includes:
-//   *    - TimeSpan(); --> Determine the exact time during the future
-//   *    - now.unixTime(); --> Number of seconds that have elapsed since the Unix epoch (Midnight 1/1/1970)
-//   *    - etc.
-//   *    
-//   * NOTE: Cannot implement MPU 6050 and RTS at the same time due to use of SDA/SCL
-//   */
-//  DateTime now = rtc.now();         // Update RTC every loop and store in DateTime special variable
-//  
-//  Serial.print(now.hour(), DEC); Serial.print(':');
-//  
-//  Serial.print(now.minute(), DEC); Serial.print(':');
-//  
-//  Serial.print(now.second(), DEC); Serial.println();
-//  //-----------------------------------------------------------------------------------------------
-//
-//
-//  //---------------------------- DHT 11 Temperature and Humidty Module ----------------------------
-//  /*
-//      Humidity Range: 20-90% ±5% Relative Humidity (RH)
-//      Temperature Range: 0-50 °C ±2% °C
-//  */
-//  dht11.update();                   // Updates current data in DHT11 (updates at every loop)
-//  int C = dht11.readCelsius();      // Reads the temperature in Celsius
-//  float F = dht11.readFahrenheit(); // Reads the temperature in Fahrenheit
-//  int H = dht11.readHumidity();     // Reads the humidity index
-//
-//  Serial.print("H: "); Serial.print(H);
-//  Serial.print("\tC: "); Serial.print(C);
-//  Serial.print("\tF: "); Serial.println(F);
-//  //-----------------------------------------------------------------------------------------------
-//
-//
-//  //---------------------------------------- Photoresistor ----------------------------------------
-//  /*
-//      Resistance at light: 18-50 kΩ
-//      Resitance at dark: 2.0 MΩ
-//
-//      Connection:
-//         - Photoresistor connected in series with 10kΩ resistor
-//         - Signal pin (A15) connected to resistor and photoresitor node
-//  */
-//  float light = analogRead(PHOTORESISTOR_PIN);
-//  Serial.print("Light level: ");
-//  Serial.println(light);
-//
-//  //-----------------------------------------------------------------------------------------------
-//
-//
-//  //------------------------------------- Sound Sensor Module -------------------------------------
-//  /*
-//      Sensitivity: 48 to 66 decibels
-//      May either have an analog or digital output (different pin for each)
-//
-//      NOTE: Sounds sensor has a potentiometer, which can be used to set sensitivy
-//  */
-//  float sound = analogRead(SOUND_ANALOG_PIN);
-//  Serial.print("Sound level: ");
-//  Serial.println(sound);
-//  if (sound > 100) {  //play with this # to set too loud
-//    Serial.println("It is too loud");
-//  }
-//  //-----------------------------------------------------------------------------------------------
-//
-//
-//  //------------------------------ HC-SR501 PIR Motion Sensor Module -------------------------------
-//  /*
-//      Detects at less than 100 degrees cone angle
-//      Output from 0V (LOW) to 3.3V (HIGH) so can be used as a standalone unit
-//      Need to wait about 30-60 secnods for te sensor to initialize
-//      Several adjustments possible:
-//        - Jumper:
-//            -- H: Repeat trigger (every time motion is detected, the delay timer is restarted)
-//            -- L: Single trigger (turn HIGH as soon as motion is detected and stays for time set below
-//        - Potentiometer on the inside:
-//            -- Sensitivity adjustment (CW to increase range from 3 to 7 meters)
-//        - Potentiometer on the outside
-//            -- Time-delay adjustment (CW to increase time-delay from 3 to 300 seconds)
-//  */
-//  if (digitalRead(PIR_PIN) == HIGH) {
-//    Serial.println("Motion Detected!");
-//  }
-//  //-----------------------------------------------------------------------------------------------
-//
-//
-//  //------------------------------------- IR Receiver Module --------------------------------------
-//  /*
-//     IR Receiver can detect and decode the various IR data
-//
-//     The following code does not decode any data as it is a simple outline of the functionality
-//     Use the IR remote to test this section
-//     Each time IR receiver detects data, it stops so it needs to be resumed at the end
-//
-//     NOTE: Also has a temperature sensor (like the MPU6050)
-//  */
-//  //  if (irrecv.decode(&results)) {
-//  //    Serial.println("IR remote detected!");
-//  //    irrecv.resume();              // Resume functionality of IR receiver module
-//  //  }
-//  //-----------------------------------------------------------------------------------------------
-//
-//  Serial.println();
+ if (loopCounter >= 100) {
+   while (1);                      // Only allows 500 iterations of void loop()
+ }
+ loopCounter++;                    // Increment loopCounter by 1
+
+ //------------------------------------- DS1307 RTC Module ---------------------------------------
+ /*
+  * Many functions available (however only some are used). RTClib also includes:
+  *    - TimeSpan(); --> Determine the exact time during the future
+  *    - now.unixTime(); --> Number of seconds that have elapsed since the Unix epoch (Midnight 1/1/1970)
+  *    - etc.
+  *    
+  * NOTE: Cannot implement MPU 6050 and RTS at the same time due to use of SDA/SCL
+  */
+ DateTime now = rtc.now();         // Update RTC every loop and store in DateTime special variable
+ 
+ Serial.print(now.hour(), DEC); Serial.print(':');
+ 
+ Serial.print(now.minute(), DEC); Serial.print(':');
+ 
+ Serial.print(now.second(), DEC); Serial.println();
+ //-----------------------------------------------------------------------------------------------
+
+
+ //---------------------------- DHT 11 Temperature and Humidty Module ----------------------------
+ /*
+     Humidity Range: 20-90% ±5% Relative Humidity (RH)
+     Temperature Range: 0-50 °C ±2% °C
+ */
+ dht11.update();                   // Updates current data in DHT11 (updates at every loop)
+ int C = dht11.readCelsius();      // Reads the temperature in Celsius
+ float F = dht11.readFahrenheit(); // Reads the temperature in Fahrenheit
+ int H = dht11.readHumidity();     // Reads the humidity index
+
+ Serial.print("H: "); Serial.print(H);
+ Serial.print("\tC: "); Serial.print(C);
+ Serial.print("\tF: "); Serial.println(F);
+ //-----------------------------------------------------------------------------------------------
+
+
+ //---------------------------------------- Photoresistor ----------------------------------------
+ /*
+     Resistance at light: 18-50 kΩ
+     Resitance at dark: 2.0 MΩ
+
+     Connection:
+        - Photoresistor connected in series with 10kΩ resistor
+        - Signal pin (A15) connected to resistor and photoresitor node
+ */
+ float light = analogRead(PHOTORESISTOR_PIN);
+ Serial.print("Light level: ");
+ Serial.println(light);
+
+ //-----------------------------------------------------------------------------------------------
+
+
+ //------------------------------------- Sound Sensor Module -------------------------------------
+ /*
+     Sensitivity: 48 to 66 decibels
+     May either have an analog or digital output (different pin for each)
+
+     NOTE: Sounds sensor has a potentiometer, which can be used to set sensitivy
+ */
+ float sound = analogRead(SOUND_ANALOG_PIN);
+ Serial.print("Sound level: ");
+ Serial.println(sound);
+ if (sound > 100) {  //play with this # to set too loud
+   Serial.println("It is too loud");
+ }
+ //-----------------------------------------------------------------------------------------------
+
+
+ //------------------------------ HC-SR501 PIR Motion Sensor Module -------------------------------
+ /*
+     Detects at less than 100 degrees cone angle
+     Output from 0V (LOW) to 3.3V (HIGH) so can be used as a standalone unit
+     Need to wait about 30-60 secnods for te sensor to initialize
+     Several adjustments possible:
+       - Jumper:
+           -- H: Repeat trigger (every time motion is detected, the delay timer is restarted)
+           -- L: Single trigger (turn HIGH as soon as motion is detected and stays for time set below
+       - Potentiometer on the inside:
+           -- Sensitivity adjustment (CW to increase range from 3 to 7 meters)
+       - Potentiometer on the outside
+           -- Time-delay adjustment (CW to increase time-delay from 3 to 300 seconds)
+ */
+ if (digitalRead(PIR_PIN) == HIGH) {
+   Serial.println("Motion Detected!");
+ }
+ //-----------------------------------------------------------------------------------------------
+
+
+ //------------------------------------- IR Receiver Module --------------------------------------
+ /*
+    IR Receiver can detect and decode the various IR data
+
+    The following code does not decode any data as it is a simple outline of the functionality
+    Use the IR remote to test this section
+    Each time IR receiver detects data, it stops so it needs to be resumed at the end
+
+    NOTE: Also has a temperature sensor (like the MPU6050)
+ */
+ //  if (irrecv.decode(&results)) {
+ //    Serial.println("IR remote detected!");
+ //    irrecv.resume();              // Resume functionality of IR receiver module
+ //  }
+ //-----------------------------------------------------------------------------------------------
+
+ Serial.println();
 }
 
 void getReading(){
